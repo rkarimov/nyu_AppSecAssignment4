@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 public interface CardInterface {
-    @PUT("/api/use/{card_number}")
+    @PUT("/api/use/{card_number}") // Part 4 vulnerability where PUT request can be tampered with or otherwise forged which would manipulate function of UseCard.kt, its coorisponding file
     fun useCard(@Path("card_number") card_number: Int?, @Header("Authorization") authHeader: String): Call<Card?>
 
     @GET("/api/cards")

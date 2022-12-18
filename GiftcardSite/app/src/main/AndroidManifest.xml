@@ -4,12 +4,15 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
-
-
+    <!-- Part 5: Removing for privacy reasons <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+      <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/> -->
+      <permission
+          android:name="GiftCardSite_Permissions"
+          android:protectionLevel="signature" />
+      <!--Part 2.2  Adding permission restrictions as to mitigate risk of application accessing resources outside of its code
+        per https://developer.android.com/guide/topics/manifest/permission-element -->
 
     <application
         android:allowBackup="true"
@@ -23,68 +26,67 @@
             android:name=".UseCard"
             android:label="@string/title_activity_use_card"
             android:theme="@style/Theme.GiftcardSite.NoActionBar">
-            <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
+            <!-- Part 2.2  <intent-filter>
+              <action android:name="android.intent.action.VIEW" />
 
-            <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.DEFAULT" />
 
-            <data android:mimeType="text/giftcards_use" />
-                <data android:scheme="giftcard" />
-                <data android:host="appsecclass.report"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".GetCard"
-            android:label="@string/title_activity_get_card"
-            android:theme="@style/Theme.GiftcardSite.NoActionBar">
-            <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
+              <data android:mimeType="text/giftcards_use" />
+                  <data android:scheme="giftcard" />
+                 <data android:host="appsecclass.report"/>
+              </intent-filter> -->
+         </activity>
+         <activity
+             android:name=".GetCard"
+             android:label="@string/title_activity_get_card"
+             android:theme="@style/Theme.GiftcardSite.NoActionBar">
+             <!--  Part 2.2  <intent-filter>
+              <action android:name="android.intent.action.VIEW" />
 
-            <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.DEFAULT" />
 
-            <data android:mimeType="text/giftcards_buy" />
-                <data android:scheme="giftcard" />
-                <data android:host="appsecclass.report"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ProductScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/Theme.GiftcardSite.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+              <data android:mimeType="text/giftcards_buy" />
+                  <data android:scheme="giftcard" />
+                  <data android:host="appsecclass.report"/>
+              </intent-filter> -->
+          </activity>
+          <activity
+              android:name=".ProductScrollingActivity"
+              android:label="@string/title_activity_scrolling"
+              android:theme="@style/Theme.GiftcardSite.NoActionBar">
+              <!--   Part 2.2  <intent-filter>
+                   <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                   <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="text/giftcards_browse" />
-                <data android:scheme="giftcard" />
-                <data android:host="appsecclass.report"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.GiftcardSite.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                   <data android:mimeType="text/giftcards_browse" />
+                   <data android:scheme="giftcard" />
+                   <data android:host="appsecclass.report"/>
+               </intent-filter> -->
+           </activity>
+        <!-- Part 2.2 keep MainActivity bc its only using items from internal stylesheet -->
+           <activity
+               android:name=".MainActivity"
+               android:label="@string/app_name"
+               android:theme="@style/Theme.GiftcardSite.NoActionBar">
+                     <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".CardScrollingActivity"
-            android:label="@string/title_activity_scrolling_card"
-            android:theme="@style/Theme.GiftcardSite.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                     <category android:name="android.intent.category.LAUNCHER" />
+             </activity>
+             <activity
+                 android:name=".CardScrollingActivity"
+                 android:label="@string/title_activity_scrolling_card"
+                 android:theme="@style/Theme.GiftcardSite.NoActionBar">
+                 <!--  Part 2.2   <intent-filter>
+                        <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                        <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="text/giftcards_list" />
-                <data android:scheme="giftcard" />
-                <data android:host="appsecclass.report"/>
-            </intent-filter>
-        </activity>
-    </application>
+                        <data android:mimeType="text/giftcards_list" />
+                        <data android:scheme="giftcard" />
+                        <data android:host="appsecclass.report"/>
+                    </intent-filter> -->
+                </activity>
+            </application>
 
-</manifest>
+        </manifest>

@@ -8,6 +8,6 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface UserInfo {
-    @POST("/api/metrics")
-    fun postInfo(@Body info: UserInfoContainer, @Header("Authorization") token: String?) : Call<User>
+  //  PART 5 - removing for privacy reason, don't wanna log my token in metrics POST call. @POST("/api/metrics")
+   // fun postInfo(@Body info: UserInfoContainer, @Header("Authorization") token: String?) : Call<User>
 }

@@ -31,16 +31,16 @@ class UseCard : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         var image : CircleImageView = findViewById(R.id.image_view)
         val card : Card? = intent.getParcelableExtra("Card")
-        findViewById<EditText>(R.id.amount).setText(card?.amount.toString())
-        Glide.with(this).asBitmap().load("http://appsecclass.report/" + card?.product?.productImageLink).into(image)
+        findViewById<EditText>(R.id.amount).setText(card?.amount.toString())    // Part 3 Fix adding HTTPs
+        Glide.with(this).asBitmap().load("https://appsecclass.report/" + card?.product?.productImageLink).into(image)
         val loggedInUser : User? = intent.getParcelableExtra("User")
-        var token : String = "Token " + loggedInUser?.token.toString()
-        Log.d("Token check", token)
+        var token : String = "Token " + loggedInUser?.token.toString() // Part 4 - Vuln: we are simply combining token and logged in user w/o permission check
+        Log.d("Token check", token) // Part 4 - token presence is checked, but its not checked whether it actually belongs owner of card. Major flaw
         val outerContext = this
         var button: Button = findViewById(R.id.submit_buy)
         button.text = "Use Card"
-        button.setOnClickListener{
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
+        button.setOnClickListener{                                                  // Part 3 Fix adding HTTPs
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(
                 GsonConverterFactory.create())
             var retrofit: Retrofit = builder.build()
             var client: CardInterface = retrofit.create(CardInterface::class.java)
